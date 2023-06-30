@@ -1,5 +1,5 @@
 {
-  "name": "@dominikfryc/test-semantic-release",
+  "name": "test-semantic-release",
   "version": "0.0.0",
   "description": "Web Components UI Library",
   "keywords": [
@@ -58,20 +58,6 @@
         "name": "alpha",
         "prerelease": true
       }
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@amanda-mitchell/semantic-release-npm-multiple",
-        {
-          "registries": {
-            "github": {},
-            "public": {}
-          }
-        }
-      ],
-      "@semantic-release/github"
     ]
   }
 }

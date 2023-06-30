@@ -1,10 +1,11 @@
 name: Release
 on:
-  branches:
-    - main
-    - next
-    - beta
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - next
+      - beta
 
 permissions:
   contents: read

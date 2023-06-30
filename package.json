@@ -28,14 +28,12 @@
     "dev": "vite",
     "build": "vite build && tsc",
     "preview": "vite preview",
-    "release": "semantic-release",
-    "release:preview": "semantic-release --plugins \"@semantic-release/commit-analyzer\" \"@semantic-release/release-notes-generator\" --dry-run --no-ci"
+    "release": "semantic-release"
   },
   "dependencies": {
     "lit": "^2.7.2"
   },
   "devDependencies": {
-    "@amanda-mitchell/semantic-release-npm-multiple": "^3.8.0",
     "semantic-release": "^21.0.6",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
@@ -58,20 +56,6 @@
         "name": "alpha",
         "prerelease": true
       }
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@amanda-mitchell/semantic-release-npm-multiple",
-        {
-          "registries": {
-            "github": {},
-            "public": {}
-          }
-        }
-      ],
-      "@semantic-release/github"
     ]
   }
 }

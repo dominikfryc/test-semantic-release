@@ -1,22 +1,77 @@
 {
-  "name": "test-semantic-release",
+  "name": "@diffix/test-semantic-release",
   "version": "0.0.0",
-  "description": "",
+  "description": "Web Components UI Library",
+  "keywords": [
+    "web components"
+  ],
+  "homepage": "https://github.com/dominikfryc/test-semantic-release#readme",
+  "bugs": "https://github.com/dominikfryc/test-semantic-release/issues",
+  "repository": "github:dominikfryc/test-semantic-release",
+  "license": "MIT",
+  "author": "Dominik Fryč <fryc.dominik@gmail.com> (https://dominikfryc.com/)",
   "type": "module",
-  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "semantic-release",
+    "release:preview": "semantic-release --plugins \"@semantic-release/commit-analyzer\" \"@semantic-release/release-notes-generator\" --dry-run --no-ci"
   },
   "dependencies": {
     "lit": "^2.7.2"
   },
   "devDependencies": {
+    "@amanda-mitchell/semantic-release-npm-multiple": "^3.8.0",
+    "semantic-release": "^21.0.6",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   },
-  "keywords": [],
-  "author": "Dominik Fryc <fryc.dominik@gmail.com> (https://dominikfryc.com/)",
-  "license": "MIT"
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "next",
+        "prerelease": true
+      },
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@amanda-mitchell/semantic-release-npm-multiple",
+        {
+          "registries": {
+            "github": {},
+            "public": {}
+          }
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  }
 }

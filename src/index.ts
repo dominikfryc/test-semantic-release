@@ -1,1 +1,1 @@
-export { DfxButton } from './button/button';
+export { MyElement } from "./my-element/my-element";

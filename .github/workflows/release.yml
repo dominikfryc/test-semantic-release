@@ -14,9 +14,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: https://github.com/dominikfryc/test-semantic-release
     permissions:
       contents: write
       issues: write

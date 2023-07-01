@@ -4,7 +4,8 @@
   "description": "Web Components UI Library",
   "keywords": [
     "web components",
-    "ui library"
+    "ui library",
+    "lit"
   ],
   "homepage": "https://github.com/dominikfryc/test-semantic-release#readme",
   "bugs": "https://github.com/dominikfryc/test-semantic-release/issues",

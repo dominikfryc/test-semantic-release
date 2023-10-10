@@ -5,7 +5,8 @@
   "keywords": [
     "web components",
     "ui library",
-    "lit"
+    "lit",
+    "vite"
   ],
   "homepage": "https://github.com/dominikfryc/test-semantic-release#readme",
   "bugs": "https://github.com/dominikfryc/test-semantic-release/issues",

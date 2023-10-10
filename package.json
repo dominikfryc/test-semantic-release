@@ -35,12 +35,12 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "lit": "^2.7.2"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
-    "semantic-release": "^21.0.6",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "semantic-release": "^21.1.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
   },
   "publishConfig": {
     "access": "public"

@@ -40,6 +40,7 @@
     "lit": "^3.0.0"
   },
   "devDependencies": {
+    "conventional-changelog-conventionalcommits": "^7.0.2",
     "glob": "^10.3.10",
     "semantic-release": "^22.0.5",
     "typescript": "^5.2.2",

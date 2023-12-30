@@ -49,11 +49,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: 'Semantic release output'
-        run: |
-          echo ${{ steps.semantic-release.outputs }}
-          echo ${{ steps.semantic-release.outputs.release-tag }}
-          echo ${{ steps.semantic-release.outputs.release-version }}
-          echo ${{ steps.semantic-release.outputs.new_release_published }}
-          echo ${{ steps.semantic-release.outputs.new_release_version }}

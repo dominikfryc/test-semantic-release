@@ -1,7 +1,6 @@
 {
   "name": "test-semantic-release-package",
   "version": "0.0.0",
-  "description": "Web Components UI Library",
   "keywords": [
     "web components",
     "ui library",
@@ -18,26 +17,30 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.umd.cjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./dist/index.js"
+    },
+    "./element": {
+      "types": "./dist/my-element/my-element.d.ts",
+      "import": "./dist/my-element/my-element.js"
     }
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",
-    "preview": "vite preview",
-    "release": "semantic-release"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lit": "^3.0.0"
   },
   "devDependencies": {
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "glob": "^10.3.10",
     "semantic-release": "^22.0.5",
     "typescript": "^5.2.2",
     "vite": "^4.4.11"
@@ -46,18 +49,71 @@
     "access": "public"
   },
   "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalCommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "section": "Performance Improvements"
+              },
+              {
+                "type": "revert",
+                "section": "Reverts"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation",
+                "hidden": false
+              },
+              {
+                "type": "chore",
+                "section": "Miscellaneous Chores",
+                "hidden": false
+              },
+              {
+                "type": "refactor",
+                "section": "Code Refactoring",
+                "hidden": false
+              },
+              {
+                "type": "test",
+                "section": "Tests",
+                "hidden": false
+              },
+              {
+                "type": "build",
+                "section": "Build System",
+                "hidden": false
+              },
+              {
+                "type": "ci",
+                "section": "Continuous Integration",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ],
     "branches": [
       "main",
       {
         "name": "next",
-        "prerelease": true
-      },
-      {
-        "name": "beta",
-        "prerelease": true
-      },
-      {
-        "name": "alpha",
         "prerelease": true
       }
     ]

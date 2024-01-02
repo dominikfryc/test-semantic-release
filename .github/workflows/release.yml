@@ -1,11 +1,9 @@
 name: Release
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
       - next
-      - beta
 
 permissions:
   contents: read
@@ -19,9 +17,14 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
+    environment:
+      name: Production
+      url: https://github.com/dominikfryc/test-semantic-release
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -31,7 +34,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
 
       - name: Install dependencies
@@ -42,6 +45,7 @@ jobs:
 
       - name: Release
         run: pnpm semantic-release
+        id: semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
